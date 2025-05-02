@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
 using Moq;
 using Wager;
 using Wager.Data;
@@ -14,11 +15,12 @@ namespace Test
         private Mock<ILogger<WagerService>> _logger;
         private Mock<IMemoryCache> _cache;
         private ICacheEntry _cachEntry = Mock.Of<ICacheEntry>();
+        static long Account = 10000;
         public WagerServiceTest()
         {
             _executionContext = new Mock<IExecutionContext>(MockBehavior.Strict);
             _cache = new Mock<IMemoryCache>();
-            _logger = new Mock<ILogger<WagerService>>(MockBehavior.Loose);
+            _logger = new Mock<ILogger<WagerService>>();
             _cache.Setup(m => m.CreateEntry(It.IsAny<object>())).Returns(_cachEntry);
         }
 
@@ -27,15 +29,15 @@ namespace Test
         public void Wager(int iterationNumber)
         {
             // Arrange
-            long account = 10000;
             var playerId = Guid.NewGuid();
             _executionContext.Setup(x => x.PlayerId).Returns(playerId);
+            _cachEntry.Value = Account;
             _cache.Setup(x => x.TryGetValue(playerId, out It.Ref<object>.IsAny))
                 .Callback((object key, out object value) =>
                 {
-                    value = account;
+                    value = Account;
                 })
-           .Returns(true);
+            .Returns(true);
             var dto = new BetDto { Number = 3, Points = 100 };
             // Act
             var service = new WagerService(_executionContext.Object, _cache.Object, _logger.Object);
@@ -45,12 +47,14 @@ namespace Test
             Assert.IsType<BetResultDto>(result);
             if (result.Status == ResultStatus.Won)
             {
-                Assert.Equal(10000 + 9 * dto.Points, result.Account);
+                Assert.Equal(Account + 9 * dto.Points, result.Account);
             }
             else
             {
-                Assert.Equal(10000 - dto.Points, result.Account);
+                Assert.Equal(Account - dto.Points, result.Account);
             }
+
+            Account = result.Account;
         }
     }
 }

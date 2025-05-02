@@ -1,0 +1,6 @@
+@Wager_HostAddress = http://localhost:5108
+
+GET {{Wager_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wager", "Wager\Wager.csproj", "{171BEA6D-7C1F-4907-8BD5-CD353306B801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6413459B-EF17-42B5-AA16-7CFC49B5075D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{171BEA6D-7C1F-4907-8BD5-CD353306B801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{171BEA6D-7C1F-4907-8BD5-CD353306B801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{171BEA6D-7C1F-4907-8BD5-CD353306B801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{171BEA6D-7C1F-4907-8BD5-CD353306B801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6413459B-EF17-42B5-AA16-7CFC49B5075D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6413459B-EF17-42B5-AA16-7CFC49B5075D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6413459B-EF17-42B5-AA16-7CFC49B5075D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6413459B-EF17-42B5-AA16-7CFC49B5075D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF1640B2-56FB-44B1-97FF-16E4D86C9CB9}
+	EndGlobalSection
+EndGlobal
